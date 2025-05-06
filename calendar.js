@@ -27,7 +27,7 @@ function checktask(Date, tasks) {
     if (tasks[i].date.getTime() === Date.getTime()) {
       const task = document.createElement('div');
       task.textContent = tasks[i].name;
-
+      task.className = "task-box";
       div.appendChild(task);
     }
   }
