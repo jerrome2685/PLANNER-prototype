@@ -1,0 +1,83 @@
+body {
+  position: relative;
+  margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: lightgray;
+}
+
+#calendar {
+  position: absolute;
+  top: 5vh;
+  left: 5vw;
+  width: 40vw;
+  height: 90vh;
+  background: lightseagreen;
+}
+
+#header {
+  position: absolute;
+  top: 5vh;
+  left: 55vw;
+  width: 40vw;
+  height: 10vh;
+  background: peru;
+}
+
+#content {
+  position: absolute;
+  top: 20vh;
+  left: 55vw;
+  width: 40vw;
+  height: 75vh;
+  /* background: blue; */
+}
+
+#calendar-title {
+  height: 10vh;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 45px;
+}
+
+#calendar-day {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #ddd;
+}
+#calendar-day > div {
+  background: lightblue;
+  margin: 5px;
+  padding: 5px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
+}
+#calendar-day > div.sun {
+  color: red;
+}
+#calendar-day > div.sat {
+  color: blue;
+}
+
+#calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: #ddd;
+}
+#calendar-grid > div {
+  background: white;
+  margin: 5px;
+  padding: 5px;
+  height: 10vh;
+  text-align: right;
+  border-radius: 10px;
+}
+#calendar-grid > div.this-month {
+  font-weight: bold;
+  color: black;
+}
+#calendar-grid > div.that-month {
+  color: gray;
+}
