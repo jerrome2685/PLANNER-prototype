@@ -28,7 +28,6 @@ function checktask(Date, tasks, onClickTask) {
       const task = document.createElement('div');
       task.textContent = tasks[i].name;
       task.className = "task-box";
-
       task.addEventListener('click', () => onClickTask(tasks[i]));
 
       div.appendChild(task);

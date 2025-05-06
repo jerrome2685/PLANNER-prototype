@@ -160,14 +160,33 @@ function chkTodo() {
 }
 
 function infoTodo(task) {
-  const nameDiv = document.createElement('div');
-  const dateDiv = document.createElement('div');
-  const infoDiv = document.createElement('div');
-  nameDiv.textContent = task.name;
-  dateDiv.textContent = task.date.toLocaleDateString();
-  infoDiv.textContent = task.memo;
   const content = document.createElement('div');
-  
+  content.className = 'info-display';
+
+  const nameField = document.createElement('div');
+  nameField.className = 'info-field';
+  nameField.innerHTML = `
+    <span class="info-label">이름</span>
+    <div class="info-content">${task.name}</div>
+  `;
+
+  const dateField = document.createElement('div');
+  dateField.className = 'info-field';
+  dateField.innerHTML = `
+    <span class="info-label">날짜</span>
+    <div class="info-content">${task.date.toLocaleDateString()}</div>
+  `;
+
+  const memoField = document.createElement('div');
+  memoField.className = 'info-field';
+  memoField.innerHTML = `
+    <span class="info-label">메모</span>
+    <div class="info-content">${task.memo}</div>
+  `;
+
+  const buttonRow = document.createElement('div');
+  buttonRow.className = 'button-row';
+
   const editBtn = document.createElement('span');
   editBtn.textContent = '수정';
   editBtn.addEventListener('click', () => editTodo(task));
@@ -176,13 +195,16 @@ function infoTodo(task) {
   submitBtn.textContent = '확인';
   submitBtn.addEventListener('click', chkTodo);
 
-  content.appendChild(nameDiv);
-  content.appendChild(dateDiv);
-  content.appendChild(infoDiv);
-  content.appendChild(editBtn);
-  content.appendChild(submitBtn);
+  buttonRow.appendChild(editBtn);
+  buttonRow.appendChild(submitBtn);
+
+  content.appendChild(nameField);
+  content.appendChild(dateField);
+  content.appendChild(memoField);
+  content.appendChild(buttonRow);
 
   document.getElementById('content').innerHTML = '';
   document.getElementById('content').appendChild(content);
 }
+
 rendering(tasks, infoTodo);

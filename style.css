@@ -18,29 +18,150 @@ body {
 #header {
   position: absolute;
   top: 5vh;
+  right: 5vw;
   left: 60vw;
-  width: 35vw;
   height: 10vh;
-  /*background: red;*/
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  border-radius: 10px;
+}
+
+#todotitle {
+  font-size: 30px;
+  font-weight: bold;
+  color: #333;
+}
+
+#add-btn {
+  font-size: 30px;
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+#add-btn:hover {
+  background-color: #45a049;
 }
 
 #content {
   position: absolute;
   top: 20vh;
+  right: 5vw;
   left: 60vw;
-  width: 35vw;
-  height: 75vh;
-  /*background: lightblue;*/
+  height: 70vh;
+  background: white;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  overflow-y: auto;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-#name-box{
-  font-size: 20px;
-  width: 60%;
+#name-box,
+#date-box,
+#memo-box {
+  font-size: 16px;
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
-#date-box{
-  font-size: 20px;
-  width: 60%;
+#memo-box {
+  height: 100px;
+  resize: vertical;
+}
+
+#sub-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#sub-btn:hover {
+  background-color: #1976D2;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background: #f9f9f9;
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  column-gap: 12px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+
+li span:first-child {
+  font-weight: 600;
+  font-size: 17px;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+li span:nth-child(2) {
+  font-size: 15px;
+  color: #777;
+  white-space: nowrap;
+}
+
+
+li .delete-btn {
+  margin-left: auto;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.info-display div {
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.info-display span {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.info-display .button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.info-display .button-row span {
+  padding: 6px 12px;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 #calendar-title {
@@ -48,24 +169,6 @@ body {
   padding: 5px;
   text-align: center;
   font-weight: bold;
-  font-size: 45px;
-}
-
-#todotitle{
-  position: absolute;
-  height: 100%;
-  width: 80%;
-  
-  padding: 5px;
-  font-size: 45px;
-}
-
-#add-btn {
-  position: absolute;
-  height: 100%;
-  width: 20%;
-  right: 0%;
-  padding: 5px;
   font-size: 45px;
 }
 
@@ -112,10 +215,61 @@ body {
 
 .task-box {
   padding-left: 2px;
+  margin-bottom: 2px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
+  text-align: left;
   border-radius: 4px;
   background-color: lightblue;
 }
+
+.info-display {
+  background: #fefefe;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-display .info-field {
+  margin-bottom: 15px;
+}
+
+.info-display .info-label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.info-display .info-content {
+  font-size: 16px;
+  color: #222;
+  padding: 8px 12px;
+  background: #f4f4f4;
+  border-radius: 5px;
+}
+
+.info-display .button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.info-display .button-row span {
+  padding: 8px 16px;
+  background-color: #2196F3;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.info-display .button-row span:hover {
+  background-color: #1976D2;
+}
+
