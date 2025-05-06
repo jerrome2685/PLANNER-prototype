@@ -15,7 +15,7 @@ const calendarGrid = document.createElement("div");
 calendarGrid.id = "calendar-grid";
 calendarArea.appendChild(calendarGrid)
 
-function checktask(Date, tasks) {
+function checktask(Date, tasks, onClickTask) {
   const div = document.createElement('div');
 
   const date = document.createElement('div');
@@ -28,6 +28,9 @@ function checktask(Date, tasks) {
       const task = document.createElement('div');
       task.textContent = tasks[i].name;
       task.className = "task-box";
+
+      task.addEventListener('click', () => onClickTask(tasks[i]));
+
       div.appendChild(task);
     }
   }
@@ -54,7 +57,7 @@ function rendering_day() {
   }
 }
 
-function rendering_grid(year, month, tasks) {
+function rendering_grid(year, month, tasks, onClickTask) {
   const date = new Date(year, month - 1, 1);
   const dayIndex = date.getDay();
   date.setDate(date.getDate() - dayIndex);
@@ -64,20 +67,18 @@ function rendering_grid(year, month, tasks) {
   }
 
   for (let i = 0; i < 35; i++) {
-    // const cell = document.createElement("divx`");
-    // cell.innerText = date.getDate();
-    const cell = checktask(date, tasks);
+    const cell = checktask(date, tasks, onClickTask);
     cell.className = (date.getMonth() + 1 === month) ? "this-month" : "that-month";
     calendarGrid.appendChild(cell);
     date.setDate(date.getDate() + 1);
   }
 }
 
-function rendering(tasks) {
+function rendering(tasks, onClickTask) {
   console.log(tasks);
   rendering_title(nowYear, nowMonth);
   rendering_day();
-  rendering_grid(nowYear, nowMonth, tasks);
+  rendering_grid(nowYear, nowMonth, tasks, onClickTask);
 }
 
 export default rendering;
