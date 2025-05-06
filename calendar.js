@@ -1,8 +1,3 @@
-const now = new Date();
-
-let nowYear = now.getFullYear();
-let nowMonth = now.getMonth() + 1;
-
 let calendarArea = document.getElementById("calendar");
 
 const calendarTitle = document.createElement("div");
@@ -37,6 +32,7 @@ function checktask(Date, tasks, onClickTask) {
   return div;
 }
 
+
 function rendering_title(year, month) {
   calendarTitle.innerText = String(year) + "." + String(month);
 }
@@ -56,6 +52,7 @@ function rendering_day() {
   }
 }
 
+
 function rendering_grid(year, month, tasks, onClickTask) {
   const date = new Date(year, month - 1, 1);
   const dayIndex = date.getDay();
@@ -73,7 +70,7 @@ function rendering_grid(year, month, tasks, onClickTask) {
   }
 }
 
-function rendering(tasks, onClickTask) {
+function rendering(nowYear, nowMonth, tasks, onClickTask) {
   console.log(tasks);
   rendering_title(nowYear, nowMonth);
   rendering_day();

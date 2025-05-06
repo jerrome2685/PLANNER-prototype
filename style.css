@@ -166,11 +166,42 @@ li .delete-btn {
 
 #calendar-title {
   height: 10vh;
-  padding: 5px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-weight: bold;
   font-size: 45px;
+  position: relative; /* 기준점이 되어줌 */
 }
+
+#prev-btn, #next-btn {
+  position: absolute;
+  top: 5%;
+  transform: translateY(-50%);
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  padding: 6px 12px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  transition: background-color 0.2s ease-in-out;
+  z-index: 2;
+}
+
+#prev-btn:hover, #next-btn:hover {
+  background-color: #f0f0f0;
+}
+
+#prev-btn {
+  left: 10px;
+}
+
+#next-btn {
+  right: 10px;
+}
+
 
 #calendar-day {
   display: grid;

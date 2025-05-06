@@ -4,6 +4,11 @@ const tasks = [];
 
 let idNum = 0;
 
+const now = new Date();
+
+let nowYear = now.getFullYear();
+let nowMonth = now.getMonth() + 1;
+
 function createTodoItem() {
   const nameDiv = document.createElement('div');
   const nameTitle = document.createElement('span');
@@ -100,7 +105,7 @@ function createList() {
     delBtn.addEventListener('click', () => {
       li.remove();
       tasks.splice(tasks.findIndex(t => t.id === task.id), 1);
-      rendering(tasks, infoTodo);
+      rendering(nowYear, nowMonth, tasks, infoTodo);
     });
     li.appendChild(delBtn);
 
@@ -134,7 +139,7 @@ function subTodo() {
     tasks.push({id: idNum, name: nameV, date: dateV, memo: memoV});
     idNum++;
     console.log(tasks);
-    rendering(tasks, infoTodo);
+    rendering(nowYear, nowMonth, tasks, infoTodo);
   }
   else {
     console.log("Invalid Date!");
@@ -150,7 +155,7 @@ function editTodo(task) {
   tasks.splice(tasks.findIndex(t => t.id === task.id), 1);
   document.getElementById('content').innerHTML = '';
   document.getElementById('content').appendChild(content);
-  rendering(tasks, infoTodo);
+  rendering(nowYear, nowMonth, tasks, infoTodo);
 }
 
 function chkTodo() {
@@ -207,4 +212,27 @@ function infoTodo(task) {
   document.getElementById('content').appendChild(content);
 }
 
-rendering(tasks, infoTodo);
+document.getElementById('prev-btn').addEventListener('click', prevMonth);
+document.getElementById('next-btn').addEventListener('click', nextMonth);
+
+function prevMonth() {
+  if (nowMonth===1) {
+    nowMonth = 12;
+    nowYear--;
+  } else {
+    nowMonth--;
+  }
+  rendering(nowYear, nowMonth, tasks, infoTodo);
+}
+
+function nextMonth(){
+  if(nowMonth===12){
+    nowMonth = 1;
+    nowYear++;
+  } else {
+    nowMonth++;
+  }
+  rendering(nowYear, nowMonth, tasks, infoTodo);
+}
+
+rendering(nowYear, nowMonth, tasks, infoTodo);
