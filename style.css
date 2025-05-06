@@ -12,8 +12,17 @@ body {
   left: 5vw;
   width: 50vw;
   height: 90vh;
+  
+  display: grid;
+  grid-template-rows: 10vh auto 1fr;
+  
   background: lightgray;
+  box-sizing: border-box;
+  padding: 0; 
 }
+
+
+
 
 #header {
   position: absolute;
@@ -56,9 +65,9 @@ body {
 #content {
   position: absolute;
   top: 20vh;
-  right: 5vw;
   left: 60vw;
-  height: 70vh;
+  right: 5vw;
+  bottom: 5vh;
   background: white;
   padding: 20px;
   box-sizing: border-box;
@@ -171,7 +180,8 @@ li .delete-btn {
   justify-content: center;
   font-weight: bold;
   font-size: 45px;
-  position: relative; /* 기준점이 되어줌 */
+  position: relative;
+  grid-row: 1;
 }
 
 #prev-btn, #next-btn {
@@ -207,6 +217,7 @@ li .delete-btn {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   background: lightgray;
+  grid-row: 2;
 }
 #calendar-day > div {
   background: lightblue;
@@ -227,12 +238,16 @@ li .delete-btn {
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   background: #ddd;
+  grid-row: 3;
+  gap: 5px;
+  padding: 5px;
+  box-sizing: border-box;
 }
 #calendar-grid > div {
-  background: white;
-  margin: 5px;
+  margin: 0;       /* 기존 margin 제거 */
   padding: 5px;
-  height: 12vh;
+  height: 12vh;    /* 필요하면 그대로 */
+  background: white;
   text-align: right;
   border-radius: 10px;
 }
@@ -303,4 +318,3 @@ li .delete-btn {
 .info-display .button-row span:hover {
   background-color: #1976D2;
 }
-
